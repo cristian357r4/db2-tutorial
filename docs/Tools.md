@@ -9,3 +9,19 @@ IBM Data Studio  是一个基于 Eclipse 的综合工具平台，它主要提供
 <http://www.ibm.com/developerworks/cn/downloads/im/data/>
 
 本例使用的是 带 IBM DB2 Analytics Accelerator Studio V5.1 的 Data Studio V4.1.2 客户端 Windows
+
+### 安装
+
+1. 下载后，能看到 ibm_idaa41_win.zip 压缩包，解压后，双击 launchpad.exe，选择“Install Product”，点击第一个“Launch administrative installation”  的 Install 按钮。
+2. 点击“下一步”
+3. 选择“我接受许可协议中的条款”，并点击“下一步”
+4. 选择安装目录，点击“下一步”
+5. 点击“安装”
+6. 点击“重新启动 Installation Manager”
+7. 在弹出的 IBM Installation Manager 窗口，点击“安装”
+8. 在要安装的软件包里，勾选所有软件，点击“下一步”
+9. 选择“我接受许可协议中的条款”，并点击“下一步”
+10. 选择安装目录，并点击“下一步”
+11. 选择安装目录，并点击“下一步”
+12. 点击“下一步”
+13. 点击“安装”
