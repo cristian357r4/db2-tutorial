@@ -145,7 +145,7 @@ DB2 时态表可用于轻松地找到数据在之前的任何时间点或未来�
 
 正如上面所述， DB2 Express-C 具有所有版本一样的核心功能，且免费，用来学习 DB2 足够了。本书所演示的例子，也是基于 Express-C 。
 
-## 参考应用
+## 参考引用
 
 * <http://baike.baidu.com/link?url=srUJcL7gekEhnI5HTYD4bON3KFWV38aIIl4TTK3WaAy7CsinkeUjAGeEfyhrA6Lo2O6P4c7pCwbJxuAGcJyKaa>
 * [DB2 版本: 哪个 DB2 10.5 发行版适合您？](http://www.ibm.com/developerworks/cn/data/library/techarticle/dm-1311whichdb2edition/)
