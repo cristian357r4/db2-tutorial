@@ -2,8 +2,8 @@
 DB2 Tutorial takes you to learn DB2 step by step with a large number of samples. There is also a GitBook version of the book: <http://www.gitbook.com/book/waylau/db2-tutorial>.
 Let's [READ](SUMMARY.md)!
 
-DB2 Tutorial 是一本关于 DB2 的开源书。利用业余时间写了本书，图文并茂，用大量实例带你一步一步走进 DB2 的世界。如有疏漏欢迎指正，欢迎提问。感谢您的参与！
- 
+DB2 Tutorial 是一本关于 DB2 的开源书。截至目前，DB2 最新版本为 10.5 。利用业余时间写了本书，图文并茂，用大量实例带你一步一步走进 DB2 的世界。如有疏漏欢迎指正，欢迎提问。感谢您的参与！
+
 ### Get Started 如何开始阅读
 
 选择下面入口之一：
