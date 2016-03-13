@@ -118,6 +118,8 @@ DB2 除了可以提供主流的OS/390和VM操作系统，以及中等规模的 A
 
 ![](http://www.ibm.com/developerworks/cn/data/library/techarticle/dm-1311whichdb2edition/figure1-DB2editions.png)
 
+可以看到免费的 DB2 Express-C Edition 是最核心的功能，而其他版本都是在此版本之前提供附加的功能，这样你从 Express-C 升级到其他版本就不会有障碍。
+
 ## 共同功能
 
 以下功能是所有 DB2 10.5 版本（包括 DB2 Express-C）中都可找到的共同功能的例子：
