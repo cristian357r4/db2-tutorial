@@ -9,9 +9,11 @@
 * 内存	: 4 GB 
 * DB2: Express-C 10.5（64-bit）
 
-## 下载 Express-C
+## 下载 DB2 Express-C
 
-链接：<http://www-01.ibm.com/software/data/db2/express-c/download.html>
+DB2 Express-C 具有 DB2 所有版本一样的核心功能，且免费，用来学习 DB2 足够了。
+
+下载地址：<http://www-01.ibm.com/software/data/db2/express-c/download.html>
 
 本例安装包为：v10.5_linuxx64_expc.tar.gz
 
@@ -62,7 +64,9 @@ DBT3533I  The db2prereqcheck utility has confirmed that all installation prerequ
 
 ## 创建用户和组
 
-要手动创建下列用户和组:
+### 创建用户和组
+
+需用具有 root 用户权限手动创建下列用户和组:
 
 用户	| 示例用户名	| 示例组名
 ---- | ---- | ----
@@ -70,28 +74,7 @@ DBT3533I  The db2prereqcheck utility has confirmed that all installation prerequ
 受防护的用户	| db2fenc1	| db2fsdm1
 DB2 管理服务器用户	| dasusr1 | dasadm1
 
-* Instance owner(实例所有者)：DB2 实例 被 Instance owner 创建在 home 目录。这个 用户 ID 控制所有 DB2 进程、拥有的所有文件系统和包含在实例的数据库使用的设备。默认用户名称是 db2inst1 和默认分组是 db2iadm1。
-* Fenced user(受防护的用户)：主要负责用户自定义函数（user defined function）和存储过程（stored precedure）。创建这个用户的好处是，当一个自定义函数发生内存泄漏的问题，至多影响到这些自定义函数和存储过程。而影响不到整个数据库管理系统。所以，如果你不需要过多的安全需要，比如在测试环境，可以将 Instance owner 用户作为 Fenced user。 如果你的系统有很多自定义函数或者存储过程的话，最好创建一个跟实例名不是同名的，这里默认创建一个名叫 db2fenc1 的用户，默认分组 db2fadm1
-* DB2 administration server user(DB2 管理服务器用户)：DB2 管理服务器用户的用户标识用于在系统上运行 DB2 管理服务器 (DAS)。缺省用户为 dasusr1，缺省组为 dasadm1。每台计算机上只能有一个 DAS。一个 DAS 维护一个或多个数据库实例，包括属于不同安装的数据库实例。DAS 可以维护其发行版级别低于 DAS 发行版级别的数据库实例。但是，对于其发行版级别高于 DAS 发行版级别的数据库实例，DAS 必须迁移到更高级别。DAS 发行版级别必须不低于所维护的任何数据库实例的发行版级别。注意， [V9.7 中已经不推荐使用 DAS
-](http://www.ibm.com/support/knowledgecenter/SSEPGG_9.7.0/com.ibm.db2.luw.wn.doc/doc/i0059276.html)，在以后的发行版中可能会将其除去。推荐使用 IBM® Data Studio 和 IBM Optim™ 工具来代替控制中心工具。有关详细信息，请参阅 不推荐使用控制中心工具。推荐使用采用安全 shell (SSH) 协议的软件程序进行远程管理。例如，可以在 Data Studio 配置工作台以运行 SQL 语句、实用程序和命令，或使用安全 shell (SHH) 协议来浏览和访问远程服务器上的文件。
-
-
-用户标识限制
-用户标识具有下列限制和要求：
-* 必须具有除 guests、admins、users 和 local 之外的主组
-* 可以包含小写字母 (a-z)、数字 (0-9) 和下划线字符 ( _ )
-* 长度不能超过八个字符
-* 不能以 IBM、SYS、SQL 或数字开头
-* 不能是 DB2 保留字（USERS、ADMINS、GUESTS、PUBLIC 或 LOCAL）或 SQL 保留字
-* 不能使用任何具有 root 用户特权的用户标识作为 DB2 实例标识、DAS 标识或受防护标识
-* 不能包含重音字符
-* 如果已指定现有用户标识，而不是创建新用户标识，那么确保该用户标识：
-    * 未锁定
-    * 不具有到期的密码
-
-需用具有 root 用户权限以创建用户和组。
-
-要在 Linux 操作系统上创建组，输入下列命令：
+输入下列命令：
 
 ```
 groupadd -g 999 db2iadm1
@@ -114,6 +97,32 @@ passwd db2inst1
 passwd db2fenc1
 passwd dasusr1
 ```
+
+### 解释：
+
+* Instance owner(实例所有者)：DB2 实例 被 Instance owner 创建在 home 目录。这个 用户 ID 控制所有 DB2 进程、拥有的所有文件系统和包含在实例的数据库使用的设备。默认用户名称是 db2inst1 和默认分组是 db2iadm1。
+* Fenced user(受防护的用户)：主要负责用户自定义函数（user defined function）和存储过程（stored precedure）。创建这个用户的好处是，当一个自定义函数发生内存泄漏的问题，至多影响到这些自定义函数和存储过程。而影响不到整个数据库管理系统。所以，如果你不需要过多的安全需要，比如在测试环境，可以将 Instance owner 用户作为 Fenced user。 如果你的系统有很多自定义函数或者存储过程的话，最好创建一个跟实例名不是同名的，这里默认创建一个名叫 db2fenc1 的用户，默认分组 db2fadm1
+* DB2 administration server user(DB2 管理服务器用户)：DB2 管理服务器用户的用户标识用于在系统上运行 DB2 管理服务器 (DAS)。缺省用户为 dasusr1，缺省组为 dasadm1。每台计算机上只能有一个 DAS。一个 DAS 维护一个或多个数据库实例，包括属于不同安装的数据库实例。DAS 可以维护其发行版级别低于 DAS 发行版级别的数据库实例。但是，对于其发行版级别高于 DAS 发行版级别的数据库实例，DAS 必须迁移到更高级别。DAS 发行版级别必须不低于所维护的任何数据库实例的发行版级别。注意， [V9.7 中已经不推荐使用 DAS
+](http://www.ibm.com/support/knowledgecenter/SSEPGG_9.7.0/com.ibm.db2.luw.wn.doc/doc/i0059276.html)，在以后的发行版中可能会将其除去。推荐使用 IBM® Data Studio 和 IBM Optim™ 工具来代替控制中心工具。有关详细信息，请参阅 不推荐使用控制中心工具。推荐使用采用安全 shell (SSH) 协议的软件程序进行远程管理。例如，可以在 Data Studio 配置工作台以运行 SQL 语句、实用程序和命令，或使用安全 shell (SHH) 协议来浏览和访问远程服务器上的文件。
+
+
+### 用户标识限制
+
+用户标识具有下列限制和要求：
+* 必须具有除 guests、admins、users 和 local 之外的主组
+* 可以包含小写字母 (a-z)、数字 (0-9) 和下划线字符 ( _ )
+* 长度不能超过八个字符
+* 不能以 IBM、SYS、SQL 或数字开头
+* 不能是 DB2 保留字（USERS、ADMINS、GUESTS、PUBLIC 或 LOCAL）或 SQL 保留字
+* 不能使用任何具有 root 用户特权的用户标识作为 DB2 实例标识、DAS 标识或受防护标识
+* 不能包含重音字符
+* 如果已指定现有用户标识，而不是创建新用户标识，那么确保该用户标识：
+    * 未锁定
+    * 不具有到期的密码
+
+
+
+
 
 ## 执行 db2_install 安装 DB2
 
@@ -340,3 +349,8 @@ DB20000I  The QUIT command completed successfully.
 
     db2inst1@waylau:~> db2stop
     SQL1064N  DB2STOP processing was successful.
+
+
+## 参考应用
+
+* [Installing DB2 Servers](http://public.dhe.ibm.com/ps/products/db2/info/vr105/pdf/en_US/DB2InstallingServers-db2ise1051.pdf)
