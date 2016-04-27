@@ -340,6 +340,8 @@ ID     NAME      DEPT   JOB   YEARS  SALARY    COMM
 
 db2 => connect reset
 DB20000I  The SQL command completed successfully.
+db2 => terminate
+DB20000I  The TERMINATE command completed successfully.
 db2 => quit
 DB20000I  The QUIT command completed successfully.
 
@@ -351,6 +353,6 @@ DB20000I  The QUIT command completed successfully.
     SQL1064N  DB2STOP processing was successful.
 
 
-## 参考应用
+## 参考引用
 
 * [Installing DB2 Servers](http://public.dhe.ibm.com/ps/products/db2/info/vr105/pdf/en_US/DB2InstallingServers-db2ise1051.pdf)
