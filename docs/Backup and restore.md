@@ -2,7 +2,7 @@
 
 ## 备份
 
-使用Backup命令，可以把整个数据库备份副本。该备份副本包括数据库系统文件，数据文件，日志文件，控制信息等。
+使用 Backup 命令，可以把整个数据库备份副本。该备份副本包括数据库系统文件，数据文件，日志文件，控制信息等。
 
 可以备份脱机工作时或在线。
 
@@ -132,6 +132,11 @@ DB20000I  RESTORE DATABASE 命令成功完成。
 ```
 
 
+更改数据库名称，语法：
+
+    db2 restore db <source-database-alias> from <directory> taken at <date-time> into <target-database-alias>
+
 ## 参考引用
 
 * <http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0005960.html?cp=SSEPGG_10.5.0&lang=zh>
+* <http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0001976.html>
