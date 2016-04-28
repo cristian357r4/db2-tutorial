@@ -91,6 +91,13 @@ D:\Program Files\IBM\SQLLIB\BIN>db2 list history backup all for newdb
   EID：2 位置：d:
 ```   
 
+
+如果执行了脱机备份，那么在备份完成后，必须重新激活该数据库：
+
+```
+db2 ACTIVATE DATABASE sample
+```
+
 ### 在线备份
 
 
@@ -123,3 +130,8 @@ SQL2539W  要复原的备份映像的指定名称与目标数据库的名称相�
 想要继续吗？（y/n） y
 DB20000I  RESTORE DATABASE 命令成功完成。
 ```
+
+
+## 参考引用
+
+* <http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0005960.html?cp=SSEPGG_10.5.0&lang=zh>
