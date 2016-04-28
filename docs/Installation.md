@@ -191,3 +191,20 @@ DBI1343I  成功完成了 db2val 命令。有关详细信息，请参阅日志�
 CUME~1\DB2LOG\db2val-Sun Mar 13 13_57_52 2016.log。
 ```
 
+
+## 安装 SAMPLE 数据库
+
+
+SAMPLE 数据库是 DB2 提供的演示用数据库，可以简单的步骤来快速创建该数据库:
+
+![](http://99btgc01.info/uploads/2016/04/clipboard%282%29.png)
+
+点击“下一步”，选择磁盘，点击“确定” 即可，执行步骤如下：
+
+```
+Creating database "SAMPLE" on path "D:"...
+  Connecting to database "SAMPLE"...
+  Creating tables and data in schema "ADMIN"...
+  Creating tables with XML columns and XML data in schema "ADMIN"..
+  'db2sampl' processing complete.
+```
