@@ -12,4 +12,4 @@ This is the summary of my book.
 * [配置](docs/Configuration.md)
 * [工具](docs/Tools.md)
 * [备份与还原](docs/Backup and restore.md)
-* [DB2常见问题排查](Troubleshooting.md)
+* [DB2常见问题排查](docs/Troubleshooting.md)
