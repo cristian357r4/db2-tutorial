@@ -91,6 +91,49 @@ SQL1004C  There is not enough storage on the file system to process the command.
 删除了没有用的数据库和老旧的数据库备份文件。
 
 
+
+## 事务日志已经满
+
+### 问题
+
+执行 db2 语句创建数据库索引、或者执行修改操作，均出现如下提示
+
+```
+DB2 Database Error: ERROR [57011] [IBM][DB2/LINUXX8664] SQL0964C The transaction log for the database is full.
+```
+
+![](../images/SQL0964C The transaction log for the database is full..png)
+
+### 排查
+
+事务日志已满。
+
+通过 `db2 => get db cfg` 语句来查看日志文件的配置：
+
+```
+ Log file size (4KB)                         (LOGFILSIZ) = 1024
+ Number of primary log files                (LOGPRIMARY) = 13
+ Number of secondary log files               (LOGSECOND) = 12
+```
+### 解决
+
+把日志文件的大小和日志文件的数量扩充。
+
+```
+db2 => update db cfg using LOGFILSIZ 10240
+DB20000I  The UPDATE DATABASE CONFIGURATION command completed successfully.
+SQL1363W  Database must be deactivated and reactivated before the changes to 
+one or more of the configuration parameters will be effective.
+db2 => update db cfg using LOGPRIMARY 100
+DB20000I  The UPDATE DATABASE CONFIGURATION command completed successfully.
+SQL1363W  Database must be deactivated and reactivated before the changes to 
+one or more of the configuration parameters will be effective.
+db2 => update db cfg using LOGSECOND 100  
+DB20000I  The UPDATE DATABASE CONFIGURATION command completed successfully.
+db2 => 
+```
+
 ## 参考引用
 
 * <http://www-01.ibm.com/support/docview.wss?uid=swg21962486>
+* <http://www.cnblogs.com/frankliiu-java/articles/2186343.html>
