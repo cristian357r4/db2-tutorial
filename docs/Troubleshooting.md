@@ -143,6 +143,8 @@ db2 =>
 ERROR [57019] [IBM] SQL1084C  The database manager failed to allocate shared memory because an operating system kernel memory limit has been reached.  SQLSTATE=57019
 ```
 
+http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.messages.sql.doc/doc/msql01084c.html
+
 
 
 ## 参考引用
