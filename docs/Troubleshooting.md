@@ -133,6 +133,18 @@ DB20000I  The UPDATE DATABASE CONFIGURATION command completed successfully.
 db2 => 
 ```
 
+## 连接数据库，分配共享内容失败，内核限制
+
+### 问题
+
+连接到数据库时，出现如下提示
+
+```
+ERROR [57019] [IBM] SQL1084C  The database manager failed to allocate shared memory because an operating system kernel memory limit has been reached.  SQLSTATE=57019
+```
+
+
+
 ## 参考引用
 
 * <http://www-01.ibm.com/support/docview.wss?uid=swg21962486>
