@@ -145,6 +145,108 @@ ERROR [57019] [IBM] SQL1084C  The database manager failed to allocate shared mem
 
 http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.messages.sql.doc/doc/msql01084c.html
 
+## 创建字段 varchar 设置过大
+
+### 问题
+
+创建字段时，varchar 设置为 500 ，报错 
+
+```
+SQL 错误 [42727]: A table space could not be found with a page size of at least "8192" that authorization ID "DB2INST" is authorized to use.. SQLCODE=-286, SQLSTATE=42727, DRIVER=4.16.53
+  com.ibm.db2.jcc.am.SqlSyntaxErrorException: A table space could not be found with a page size of at least "8192" that authorization ID "DB2INST" is authorized to use.. SQLCODE=-286, SQLSTATE=42727, DRIVER=4.16.53
+```
+
+* http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0061057.html
+* http://www.db2china.net/Question/39301
+* http://www.west.cn/www/info/28275-1.htm
+
+```
+db2 => connect to necc_db
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 10.1.0
+ SQL authorization ID   = DB2INST
+ Local database alias   = NECC_DB
+
+db2 => LIST TABLESPACES SHOW DETAIL
+
+           Tablespaces for Current Database
+
+ Tablespace ID                        = 0
+ Name                                 = SYSCATSPACE
+ Type                                 = Database managed space
+ Contents                             = All permanent data. Regular table space.
+ State                                = 0x0000
+   Detailed explanation:
+     Normal
+ Total pages                          = 32768
+ Useable pages                        = 32764
+ Used pages                           = 32244
+ Free pages                           = 520
+ High water mark (pages)              = 32244
+ Page size (bytes)                    = 4096
+ Extent size (pages)                  = 4
+ Prefetch size (pages)                = 4
+ Number of containers                 = 1
+
+ Tablespace ID                        = 1
+ Name                                 = TEMPSPACE1
+ Type                                 = System managed space
+ Contents                             = System Temporary data
+ State                                = 0x0000
+   Detailed explanation:
+     Normal
+ Total pages                          = 1
+ Useable pages                        = 1
+ Used pages                           = 1
+ Free pages                           = Not applicable
+ High water mark (pages)              = Not applicable
+ Page size (bytes)                    = 4096
+ Extent size (pages)                  = 32
+ Prefetch size (pages)                = 32
+ Number of containers                 = 1
+
+ Tablespace ID                        = 2
+ Name                                 = USERSPACE1
+ Type                                 = Database managed space
+ Contents                             = All permanent data. Large table space.
+ State                                = 0x0000
+   Detailed explanation:
+     Normal
+ Total pages                          = 16384
+ Useable pages                        = 16352
+ Used pages                           = 14048
+ Free pages                           = 2304
+ High water mark (pages)              = 14048
+ Page size (bytes)                    = 4096
+ Extent size (pages)                  = 32
+ Prefetch size (pages)                = 32
+ Number of containers                 = 1
+
+ Tablespace ID                        = 3
+ Name                                 = SYSTOOLSPACE
+ Type                                 = Database managed space
+ Contents                             = All permanent data. Large table space.
+ State                                = 0x0000
+   Detailed explanation:
+     Normal
+ Total pages                          = 8192
+ Useable pages                        = 8188
+ Used pages                           = 192
+ Free pages                           = 7996
+ High water mark (pages)              = 192
+ Page size (bytes)                    = 4096
+ Extent size (pages)                  = 4
+ Prefetch size (pages)                = 4
+ Number of containers                 = 1
+
+db2 => 
+```
+
+
+ALTER TABLESPACE tablespacename CONVERT TO LARGE
+
 
 
 ## 参考引用
